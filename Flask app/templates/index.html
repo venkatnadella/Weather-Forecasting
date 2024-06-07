@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Prediction</h1>
+        <form action="/" method="post">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+            
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" required><br><br>
+            
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction %}
+        <h2>The weather is going to be: {{ prediction }}</h2>
+        <p><b> Sensor Input Data</b>  </p> 
+        <p>Precipitation : {{ features[0] }} mm</p>
+        <p>Highest Temperature: {{ features[1] }} °C</p>
+        <p>Lowest Temperature: {{ features[2] }} °C</p>
+        <p>Wind speed: {{ features[3] }} Kmph</p>
+        {% endif %}
+    </div>
+</body>
+</html>
